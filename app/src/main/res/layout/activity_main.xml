@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="From"
+        android:textSize="30sp" />
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"/>
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        />
+    <EditText
+        android:id="@+id/edit_text_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="5dp"
+        android:inputType="phone"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/edit_text_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_marginTop="5dp"
+        android:inputType="none"
+        android:enabled="false"
+        android:textColor="#212121"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/button_clear"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Clear"
+            android:textSize="24sp"/>
+        <Button
+            android:id="@+id/button_convert"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:text="Convert"
+            android:layout_weight="1"
+            android:textSize="24sp"/>
+    </LinearLayout>
+
+
+</LinearLayout>
