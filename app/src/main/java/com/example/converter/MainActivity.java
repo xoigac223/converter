@@ -2,13 +2,15 @@ package com.example.converter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class MainActivity extends Activity{
+public class MainActivity extends Activity implements TextWatcher {
     Spinner spinner1, spinner2;
     EditText editText1, editText2;
     int posFrom;
@@ -54,62 +56,69 @@ public class MainActivity extends Activity{
 
             }
         });
-        findViewById(R.id.button_clear).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editText1.setText("");
-                editText2.setText("");
-            }
-        });
-        findViewById(R.id.button_convert).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    input = Double.parseDouble(editText1.getText().toString());
-                    if (symbolMoney[posFrom].equals("USD")){
-                        USD usd = new USD(input);
-                        editText2.setText(String.valueOf(usd.toMoney(symbolMoney[posTo])));
-                    }
-                    if (symbolMoney[posFrom].equals("CNY")){
-                        CNY cny = new CNY(input);
-                        editText2.setText(String.valueOf(cny.toMoney(symbolMoney[posTo])));
-                    }
-                    if (symbolMoney[posFrom].equals("EUR")){
-                        EUR eur = new EUR(input);
-                        editText2.setText(String.valueOf(eur.toMoney(symbolMoney[posTo])));
-                    }
-                    if (symbolMoney[posFrom].equals("GBP")){
-                        GBP gbp = new GBP(input);
-                        editText2.setText(String.valueOf(gbp.toMoney(symbolMoney[posTo])));
-                    }
-                    if (symbolMoney[posFrom].equals("INR")){
-                        INR inr = new INR(input);
-                        editText2.setText(String.valueOf(inr.toMoney(symbolMoney[posTo])));
-                    }
-                    if (symbolMoney[posFrom].equals("JPY")){
-                        JPY jpy = new JPY(input);
-                        editText2.setText(String.valueOf(jpy.toMoney(symbolMoney[posTo])));
-                    }
-                    if (symbolMoney[posFrom].equals("KRW")){
-                        KRW krw = new KRW(input);
-                        editText2.setText(String.valueOf(krw.toMoney(symbolMoney[posTo])));
-                    }
-                    if (symbolMoney[posFrom].equals("RUB")){
-                        RUB rub = new RUB(input);
-                        editText2.setText(String.valueOf(rub.toMoney(symbolMoney[posTo])));
-                    }
-                    if (symbolMoney[posFrom].equals("SGD")){
-                        SGD sgd = new SGD(input);
-                        editText2.setText(String.valueOf(sgd.toMoney(symbolMoney[posTo])));
-                    }
-                    if (symbolMoney[posFrom].equals("VND")){
-                        VND vnd = new VND(input);
-                        editText2.setText(String.valueOf(vnd.toMoney(symbolMoney[posTo])));
-                    }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
+        editText1.addTextChangedListener(this);
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+        if (s.toString().equals("")){
+            editText2.setText("");
+        } else {
+            try {
+                input = Double.parseDouble(s.toString());
+                if (symbolMoney[posFrom].equals("USD")) {
+                    USD usd = new USD(input);
+                    editText2.setText(String.valueOf(usd.toMoney(symbolMoney[posTo])));
                 }
+                if (symbolMoney[posFrom].equals("CNY")) {
+                    CNY cny = new CNY(input);
+                    editText2.setText(String.valueOf(cny.toMoney(symbolMoney[posTo])));
+                }
+                if (symbolMoney[posFrom].equals("EUR")) {
+                    EUR eur = new EUR(input);
+                    editText2.setText(String.valueOf(eur.toMoney(symbolMoney[posTo])));
+                }
+                if (symbolMoney[posFrom].equals("GBP")) {
+                    GBP gbp = new GBP(input);
+                    editText2.setText(String.valueOf(gbp.toMoney(symbolMoney[posTo])));
+                }
+                if (symbolMoney[posFrom].equals("INR")) {
+                    INR inr = new INR(input);
+                    editText2.setText(String.valueOf(inr.toMoney(symbolMoney[posTo])));
+                }
+                if (symbolMoney[posFrom].equals("JPY")) {
+                    JPY jpy = new JPY(input);
+                    editText2.setText(String.valueOf(jpy.toMoney(symbolMoney[posTo])));
+                }
+                if (symbolMoney[posFrom].equals("KRW")) {
+                    KRW krw = new KRW(input);
+                    editText2.setText(String.valueOf(krw.toMoney(symbolMoney[posTo])));
+                }
+                if (symbolMoney[posFrom].equals("RUB")) {
+                    RUB rub = new RUB(input);
+                    editText2.setText(String.valueOf(rub.toMoney(symbolMoney[posTo])));
+                }
+                if (symbolMoney[posFrom].equals("SGD")) {
+                    SGD sgd = new SGD(input);
+                    editText2.setText(String.valueOf(sgd.toMoney(symbolMoney[posTo])));
+                }
+                if (symbolMoney[posFrom].equals("VND")) {
+                    VND vnd = new VND(input);
+                    editText2.setText(String.valueOf(vnd.toMoney(symbolMoney[posTo])));
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        });
+        }
     }
 }
